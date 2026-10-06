@@ -29,15 +29,18 @@ classifiers = [
 ]
 dynamic = [ "version" ]
 dependencies = [ "openai==2.30", "pillow==12.2", "python-dotenv==1.2.2" ]
+# российские чеки: QR-код по 54-ФЗ и выгрузка в Excel — pip install "receipt-ocr[ru]"
+optional-dependencies.ru = [ "openpyxl>=3.1", "zxing-cpp>=2.2" ]
 urls."Bug Tracker" = "https://github.com/bhimrazy/receipt-ocr/issues"
 urls."Source Code" = "https://github.com/bhimrazy/receipt-ocr"
 urls.Documentation = "https://github.com/bhimrazy/receipt-ocr"
 urls.Download = "https://github.com/bhimrazy/receipt-ocr"
 urls.Homepage = "https://github.com/bhimrazy/receipt-ocr"
 scripts.receipt-ocr = "receipt_ocr.cli:main"
+scripts.receipt-ocr-ru = "receipt_ocr.ru.cli:main"
 
 [dependency-groups]
-dev = [ "codecov", "coverage", "pillow", "pytest", "pytest-cov" ]
+dev = [ "codecov", "coverage", "pillow", "pytest", "pytest-cov", "qrcode" ]
 
 [tool.hatch]
 build.targets.wheel.packages = [ "src/receipt_ocr" ]
